@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>닉네임 생성 시스템</title>
+    <style>
+        body {
+            background-color: #121212; /* Dark black theme */
+            color: #e0e0e0; /* Light gray text for readability */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Elegant font */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #ffd700; /* Gold for luxurious feel */
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Subtle glow */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 400px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ffd700, #d4af37); /* Gold gradient for luxury */
+            color: #121212; /* Dark text on gold */
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 50px; /* Rounded for modern look */
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); /* Subtle shadow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        button:hover {
+            transform: scale(1.1); /* Scale up on hover */
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5); /* Enhanced shadow */
+        }
+
+        button:active {
+            transform: scale(0.95); /* Slight press effect */
+        }
+
+        #nickname {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #ffd700; /* Gold for generated nickname */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #nickname.show {
+            opacity: 1; /* Fade in animation */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>닉네임 생성 시스템</h1>
+    <p>버튼을 클릭하면 "유피" + 6자리 랜덤 숫자로 닉네임을 생성합니다.</p>
+    <button onclick="generateNickname()">닉네임 생성</button>
+    <div id="nickname"></div>
+
+    <script>
+        function generateNickname() {
+            const randomNum = Math.floor(100000 + Math.random() * 900000); // 6자리 랜덤 숫자 (100000 ~ 999999)
+            const nickname = "유피" + randomNum;
+            const nicknameElement = document.getElementById('nickname');
+            nicknameElement.textContent = "생성된 닉네임: " + nickname;
+            nicknameElement.classList.add('show'); // Fade in 효과 트리거
+        }
+    </script>
+</body>
+</html>
